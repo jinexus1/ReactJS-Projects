@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+}
+
+.quiz {
+  margin: 20px;
+}
+
+.question-section {
+  margin-bottom: 20px;
+}
+
+.answer-section button {
+  margin: 5px;
+}
+
+.score-section {
+  font-size: 24px;
+  margin-top: 20px;
+}
