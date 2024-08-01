@@ -6,11 +6,13 @@ const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+
   useEffect(() => {
     const getQuizData = async () => {
       const quizData = await fetchQuizData();
       setQuestions(quizData);
     };
+
     getQuizData();
   }, []);
 
@@ -18,6 +20,7 @@ const Quiz = () => {
     if (isCorrect) {
       setScore(score + 1);
     }
+
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestionIndex(nextQuestionIndex);
@@ -25,9 +28,11 @@ const Quiz = () => {
       setShowScore(true);
     }
   };
+
   if (questions.length === 0) {
     return <div>Loading...</div>;
   }
+
   return (
     <div className="quiz">
       {showScore ? (
@@ -38,8 +43,11 @@ const Quiz = () => {
         <>
           <div className="question-section">
             <div className="question-count">
-              <span>Question {currentQuestionIndex + 1}</span>
+              <span>Question {currentQuestionIndex + 1}</span>/
               {questions.length}
+            </div>
+            <div className="question-text">
+              {questions[currentQuestionIndex].question}
             </div>
           </div>
           <div className="answer-section">
@@ -54,7 +62,7 @@ const Quiz = () => {
               )
             )}
             <button onClick={() => handleAnswerButtonClick(true)}>
-              {questions[currentQuestionIndex].correct_answers}
+              {questions[currentQuestionIndex].correct_answer}
             </button>
           </div>
         </>
