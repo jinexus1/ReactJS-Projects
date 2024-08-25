@@ -45,7 +45,8 @@ const questions = [
 function FlashCards() {
   const [selectedId, setSelectedId] = useState(null);
   function handleClick(id) {
-    setSelectedId(id);
+    setSelectedId(id !== selectedId ? id : null);
+    //basically if we re-click on the selected flashcard it should get unselected
   }
   return (
     <div className="flashcards">
