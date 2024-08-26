@@ -1,3 +1,4 @@
+//values are passed from parent:App.js to Item.js through PackingList.js
 export default function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li>
